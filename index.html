@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ATIVIDADE 1</title>
+    <style>
+        body {
+            background-color: red;
+            color: white;
+        }
+        /* Estilo para a bolinha de seleção */
+        input[type="radio"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid white;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Estilo para a bolinha de seleção quando selecionada */
+        input[type="radio"]:checked {
+            background-color: white;
+        }
+
+        /* Estilo para o botão enviar */
+        input[type="submit"] {
+            padding: 10px 20px; /* Ajuste o preenchimento para aumentar o tamanho */
+            font-size: 16px; /* Ajuste o tamanho da fonte se desejar */
+            border: none;
+            background-color: #fff; /* Cor de fundo do botão */
+            color: red; /* Cor do texto do botão */
+            cursor: pointer;
+        }
+
+        /* Estilo para o botão desviante */
+        .desviante {
+            padding: 15px 32px; /* Ajuste o preenchimento */
+            border-radius: 3px;
+            border: 2px solid white;
+            background-color: white; /* Cor de fundo do botão */
+            color: #000500; /* Cor do texto do botão */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>A1 - Usabilidade, desenvolvimento web, mobile e jogos</h1>
+
+    <h2>Clique na imagem e visualize uma Aula de Bola!</h2>
+
+    <a href="https://youtu.be/5WqQ5ysu2pM?si=JpMKoerpCWXdYjAh&t=22" target="_blank">
+        <img src="INTvsCOR.jpg" style="width:400px">
+    </a>
+
+    <table cellpadding="5"> 
+        <tr>
+            <th>Questão 1:</th>
+            <td>Qual foi o Placar do Jogo?</td>
+            <br>
+        </tr>
+    </table>
+    <br>
+    <form id="quizForm" onsubmit="checkAnswer()">
+        <label for="fname">Placar:</label><br>
+        <input type="text" id="fname" name="fname" value=""><br><br>
+
+        <label for="fUC">Quem fez o primeiro Gol do Inter?</label><br><br>
+        <input type="radio" id="html" name="fav_language" value="Renê">
+        <label for="html">Renê</label><br>
+        <input type="radio" id="java" name="fav_language" value="Maurício">
+        <label for="java">Maurício</label><br><br>
+
+        <!-- Botão desviante -->
+        <input type="button" class="desviante" value="É O CORINTHIANS!" onmouseover="moveButton(this)"> <br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        function moveButton(x) {
+            marginX = Math.floor(Math.random() * 600);
+            marginY = Math.floor(Math.random() * 600);
+
+            x.style.margin = marginY.toString() + 'px ' + marginX.toString() + 'px';
+        }
+
+        function checkAnswer() {
+            var selectedOption = document.querySelector('input[name="fav_language"]:checked').value;
+            if (selectedOption === "Maurício") {
+                alert("É O INTER! Parabéns!");
+            } else if (selectedOption === "Renê") {
+                alert("ERRADO!. Bagulho é Inter!.");
+                window.location.reload(); // Recarrega a página
+                return false; // Impede o envio do formulário
+            } else {
+                alert("Resposta incorreta. Sai dai sofredor!");
+            }
+        }
+    </script>
+</body>
+</html>
